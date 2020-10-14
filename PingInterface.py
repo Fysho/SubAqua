@@ -167,9 +167,10 @@ class PingInterface():
             count+=1
             distance = (count / 200) * self.range_d
             if(distance > 0.4):
-                if(reading > 0.65):
+                if(reading/255 > 0.65):
                     returndistrance = distance
 
+        print("distance: " + str(returndistrance))
         data_vals_trans[targetAngle];
         return data_vals_trans, returndistrance
 
