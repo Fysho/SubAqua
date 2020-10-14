@@ -45,6 +45,8 @@ def makeDecision():
         data_vals, d6 = pingInterface.transmitAngle(50, data_vals)
         data_vals, d7 = pingInterface.transmitAngle(90, data_vals)
         print("Finnished Scannings")
+        
+        print(d0 ," ",d1 ," ",d2 ," ",d3 ," ",d4 ," ",d5 ," ",d6 ," ",d7 ," ")
 
         # d0 = getDistance(90)
         # d1 = getDistance(50)

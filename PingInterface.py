@@ -178,7 +178,7 @@ class PingInterface():
             count+=1
             distance = (count / 200.0) * self.range_d
             if(distance > 0.55 and found == False):
-                if(reading/255 > 0.75):					
+                if(reading/255 > 0.85):					
                     found = True
                     returndistrance = distance
                     print("Distance at angle ", targetAngle,": " + str(returndistrance))
