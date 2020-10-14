@@ -187,8 +187,6 @@ class PingInterface():
 
     def transmitSweep(self, targetAngle1, targetAngle2, data = None): # checks a range of angles in front of us
         print('sweeping from ' , targetAngle1, ' to ', targetAngle2);
-        targetAngle1 = targetAngle1 + 180;
-        targetAngle2 = targetAngle2 + 180;
 
         if(targetAngle1 < 0):
             targetAngle1 = targetAngle1 + 360;
