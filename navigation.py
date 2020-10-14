@@ -35,7 +35,7 @@ def makeDecision():
     while(loopcount < loops):
         loopcount+= 1;
         data_vals = csvWriter.getEmptyCSV();
-        print("Scanning Right to Left:")
+        print("Scanning Left to Right:")
         data_vals, d0 = pingInterface.transmitAngle(-90, data_vals)
         data_vals, d1 = pingInterface.transmitAngle(-50, data_vals)
         data_vals, d2 = pingInterface.transmitAngle(-30, data_vals)

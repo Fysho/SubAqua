@@ -154,8 +154,6 @@ class PingInterface():
         if(data is not None):
             data_vals_trans = data;
 
-        targetAngle = targetAngle + 180
-
         if(targetAngle < 0):
             targetAngle = targetAngle + 360;
         if(targetAngle > 360):
@@ -174,15 +172,17 @@ class PingInterface():
         count = 0;
         returndistrance = self.range_d;
 
+        found = False;
+
         for reading in data:
             count+=1
-            distance = (count / 200) * self.range_d
-            if(distance > 0.4):
-                if(reading/255 > 0.65):
+            distance = (count / 200.0) * self.range_d
+            if(distance > 0.55 and found == False):
+                if(reading/255 > 0.75):					
+                    found = True
                     returndistrance = distance
+                    print("Distance at angle ", targetAngle,": " + str(returndistrance))
 
-
-        print("Distance at angle ", targetAngle,": " + str(returndistrance))
         data_vals_trans[targetStep];
         return data_vals_trans, returndistrance
 
