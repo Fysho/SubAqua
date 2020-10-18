@@ -153,7 +153,7 @@ class PingInterface():
         return data_vals_trans
 
 
-    def transmitSweep(self, targetAngle1, targetAngle2): # checks a range of angles in front of us
+    def transmitSweep(self, targetAngle1, targetAngle2, data = None): # checks a range of angles in front of us
         print('sweeping from ' , targetAngle1, ' to ', targetAngle2);
         if(targetAngle1 < 0):
             targetAngle1 = targetAngle1 + 360;
@@ -168,6 +168,8 @@ class PingInterface():
 
         print('testeswtests');
         data_vals_trans={} #new dictionary to store sonar strength data array
+        if(data is not None):
+            data_vals_trans = data;
         closestDistance = 10000;
         closestStep = -1;
 

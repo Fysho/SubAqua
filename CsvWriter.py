@@ -52,3 +52,10 @@ class CsvWriter():
         print ("Saving to: " + newFileName)
 
         return
+
+    def getEmptyCSV():
+        emptyData = {}
+        for i in range(400):
+            emptyData(i) = [0] * 200;
+
+        return emptyData
