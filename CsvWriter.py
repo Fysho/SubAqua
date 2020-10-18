@@ -53,7 +53,7 @@ class CsvWriter():
 
         return
 
-    def getEmptyCSV():
+    def getEmptyCSV(self):
         emptyData = {}
         for i in range(400):
             emptyData[i] = [0] * 200;
