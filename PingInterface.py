@@ -44,10 +44,10 @@ class PingInterface():
         #port= str( str(port_bin.strip()) + '/dev/ttyUSB0')
         #port= str(port_bin.strip())
         port= str('/dev/ttyUSB0')
-        self.args.device = port #port identification changed
-        if self.args.device is None and self.args.udp is None:
-            self.parser.print_help()
-            exit(1)
+        #self.args.device = port #port identification changed
+        #if self.args.device is None and self.args.udp is None:
+        #    self.parser.print_help()
+        #    exit(1)
         #Connect to device
   #      if self.args.device is not None:
    #         self.ping360.connect_serial(self.args.device, self.args.baudrate)

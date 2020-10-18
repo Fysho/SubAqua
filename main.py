@@ -3,7 +3,7 @@ import PingInterface
 def main():
     csvWriter = CsvWriter.CsvWriter("sonarData.csv")
     pingInterface = PingInterface.PingInterface(csvWriter)
-    pingInterface.readArgs()
+    #pingInterface.readArgs()
     pingInterface.connectToPing()
 
 
