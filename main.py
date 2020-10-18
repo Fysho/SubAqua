@@ -5,8 +5,10 @@ def main():
     pingInterface = PingInterface.PingInterface(csvWriter)
     #pingInterface.readArgs()
     pingInterface.connectToPing()
+    pingInterface.setSonarDistance(5);
     data_vals = csvWriter.getEmptyCSV();
-    data_vals = pingInterface.transmitSweep(-45, 45, data_vals)
+    data_vals = pingInterface.transmitSweep(0, 360, data_vals)
+    s
     csvWriter.saveToCSV(data_vals)
 
     #newData = {}

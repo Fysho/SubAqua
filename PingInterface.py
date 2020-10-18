@@ -114,7 +114,9 @@ class PingInterface():
 
         return
 
-
+    def setSonarDistance(self, distance):
+        self.range_d = distance
+        self.setDeviceSetting()
 
     def setDeviceSetting(self):
         print('set device settings')
