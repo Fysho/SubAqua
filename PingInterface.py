@@ -16,7 +16,7 @@ class PingInterface():
         self.args = None
 
         #------Initialise device settings------#
-        self._mode= 1
+        self.mode= 1
         self.num_points = 200       # Number of samples per reflected signal [200-1200]
         self.gain = 1                 	      # 0-2
         self.angle_sector = 200        # 200 (0 =0deg, 100= 90deg, 200=180deg, 300=270deg, 400=360deg)
