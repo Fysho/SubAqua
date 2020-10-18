@@ -8,7 +8,7 @@ import shutil
 #-----Globals-----#
 _WRITE_CONFIG_TO_CSV = False
 _FILE_NUMBER = 100
-_USE_LONG_SAVE_FORMAT = False
+_USE_LONG_SAVE_FORMAT = True
 
 class CsvWriter():
     def __init__(self, fileName=None):
