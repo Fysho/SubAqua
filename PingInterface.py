@@ -238,8 +238,12 @@ def plotSonarStrength ( data ):
     return
 
 
-
-
+#-----Globals-----#
+SPEED_OF_SOUND = 1500
+_FW_MIN_TRANSMIT_DURATION = 5
+_FW_MAX_TRANSMIT_DURATION = 500
+_SAMPLE_PERIOD_TICK_DURATION = 25e-9    ##_sample_period is the number of timer ticks between each data point
+                                        ##each timer tick has a duration of 25 nanoseconds
 
 #@Calculate the sample period based in the new range
 def calculateSamplePeriod(distance, num_points):
