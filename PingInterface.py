@@ -163,13 +163,12 @@ class PingInterface():
         if(targetAngle2 < 0):
             targetAngle2 = targetAngle2 + 360;
 
-        targetStep1 = int(targetAngle1 * 400.0 / 360.0)
-        targetStep2 = int(targetAngle2 * 400.0 / 360.0)
+        targetStep1 = np.rint(targetAngle1 * 400.0 / 360.0)
+        targetStep2 = np.rint(targetAngle2 * 400.0 / 360.0)
 
         print(targetStep1);
         print(targetStep2);
 
-        print('testeswtests');
         data_vals_trans={} #new dictionary to store sonar strength data array
         if(data is not None):
             data_vals_trans = data;

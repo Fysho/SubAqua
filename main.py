@@ -8,7 +8,7 @@ def main():
     pingInterface.setSonarDistance(5);
     data_vals = csvWriter.getEmptyCSV();
     data_vals = pingInterface.transmitSweep(0, 360, data_vals)
-    s
+
     csvWriter.saveToCSV(data_vals)
 
     #newData = {}
