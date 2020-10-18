@@ -4,6 +4,7 @@ from brping import PingDevice
 from brping import pingmessage
 
 import subprocess #import Popen, PIPE, call
+import numpy as np
 
 class PingInterface():
     def __init__(self, csvWriter):
