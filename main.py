@@ -6,12 +6,14 @@ def main():
     #pingInterface.readArgs()
     pingInterface.connectToPing()
 
+    data_vals = pingInterface.transmitSweep(-45, 45)
+    csvWriter.saveToCSV(data_vals)
 
-    newData = {}
-    for i in range(20):
-        newData[i] = [1,2,3] #save all data values corresponding to each grad step
+    #newData = {}
+    #for i in range(20):
+    #    newData[i] = [1,2,3] #save all data values corresponding to each grad step
 
-    csvWriter.saveToCSV(newData)
+    #csvWriter.saveToCSV(newData)
 
 # PYTHON MAIN CALL
 if __name__ == "__main__":
