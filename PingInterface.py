@@ -163,8 +163,8 @@ class PingInterface():
         if(targetAngle2 < 0):
             targetAngle2 = targetAngle2 + 360;
 
-        targetStep1 =(int) np.rint(targetAngle1 * 400.0 / 360.0)
-        targetStep2 =(int) np.rint(targetAngle2 * 400.0 / 360.0)
+        targetStep1 = int (np.rint(targetAngle1 * 400.0 / 360.0))
+        targetStep2 = int (np.rint(targetAngle2 * 400.0 / 360.0))
 
         print(targetStep1);
         print(targetStep2);
