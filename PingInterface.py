@@ -236,3 +236,38 @@ def plotSonarStrength ( data ):
 
     plt.show()
     return
+
+
+
+
+
+#@Calculate the sample period based in the new range
+def calculateSamplePeriod(distance, num_points):
+    return 2*distance/(num_points*SPEED_OF_SOUND*_SAMPLE_PERIOD_TICK_DURATION)
+
+#Adjust the transmit duration for a specific range
+ # Per firmware engineer:
+ # 1. Starting point is TxPulse in usec = ((one-way range in metres) * 8000) / (Velocity of sound in metres
+ # per second)
+ # 2. Then check that TxPulse is wide enough for currently selected sample interval in usec, i.e.,
+ #    if TxPulse < (2.5 * sample interval) then TxPulse = (2.5 * sample interval)
+ # 3. Perform limit checking
+ # @return Transmit duration
+def adjustTransmitDuration(distance,_sample_period):
+    # 1
+    transmit_duration = 8000 * (distance / SPEED_OF_SOUND)
+    # 2 (transmit duration is microseconds, samplePeriod() is nanoseconds)
+    transmit_duration = np.maximum(2.5*_sample_period/1000, transmit_duration)
+    # 3
+    return np.maximum(_FW_MIN_TRANSMIT_DURATION, np.minimum(transmitDurationMax(_sample_period), transmit_duration))
+
+#@The maximum transmit duration that will be applied is limited internally by the firmware to prevent damage to the hardware
+ # The maximum transmit duration is equal to 64 * the sample period in microseconds
+ # @return The maximum transmit duration possible
+def transmitDurationMax(_sample_period):
+    return min(_FW_MAX_TRANSMIT_DURATION, _sample_period * 64e6)
+
+#@Sample period is in ns
+# @return double
+def samplePeriod(_sample_period):
+    return _sample_period*_SAMPLE_PERIOD_TICK_DURATION
