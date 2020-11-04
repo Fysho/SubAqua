@@ -156,7 +156,7 @@ class PingInterface():
         if(targetAngle < 0):
             targetAngle = targetAngle + 360;
         targetStep = int (np.rint(targetAngle * 400.0 / 360.0))
-        print("scanning this step: " + targetStep + " at this angle: " + targetAngle );
+        print("scanning this step: " + str(targetStep) + " at this angle: " + str(targetAngle) );
 
         self.ping360.transmitAngle(targetAngle)
         data = self.ping360._data
