@@ -33,7 +33,7 @@ def makeDecision():
     loopcount = 0;
 
     while(loopcount < loops):
-        loopcount++;
+        loopcount+= 1;
         data_vals = csvWriter.getEmptyCSV();
         data_vals, d0 = pingInterface.transmitAngle(90, data_vals)
         data_vals, d1 = pingInterface.transmitAngle(50, data_vals)
