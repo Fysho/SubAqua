@@ -148,12 +148,30 @@ class PingInterface():
 
         return
 
-    def transmitAngle(self, targetAngle):  # checks a single angle in front of us
+    def transmitAngle(self, targetAngle, data = None):  # checks a single angle in front of us
         print('transmitting single angle: ' , targetAngle);
         data_vals_trans={} #new dictionary to store sonar strength data array
+        if(data is not None):
+            data_vals_trans = data;
+        if(targetAngle < 0):
+            targetAngle = targetAngle + 360;
+        targetStep = int (np.rint(targetAngle * 400.0 / 360.0))
+        print("scanning this step: " + targetStep + " at this angle: " + targetAngle );
+
         self.ping360.transmitAngle(targetAngle)
-        data_vals_trans[targetAngle] = self.ping360._data #save all data values corresponding to each grad step
-        return data_vals_trans
+        data = self.ping360._data
+        count = 0;
+        returndistrance = self.range_d;
+
+        for reading in data:
+            count+=1
+            distance = (count / 200) * self.range_d
+            if(distance > 0.4):
+                if(reading > 0.65):
+                    returndistrance = getDistance
+
+        data_vals_trans[targetAngle];
+        return data_vals_trans, returndistrance
 
 
     def transmitSweep(self, targetAngle1, targetAngle2, data = None): # checks a range of angles in front of us
