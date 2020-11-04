@@ -153,12 +153,21 @@ class PingInterface():
         data_vals_trans={} #new dictionary to store sonar strength data array
         if(data is not None):
             data_vals_trans = data;
+
+        targetAngle = targetAngle + 180
+
         if(targetAngle < 0):
             targetAngle = targetAngle + 360;
+        if(targetAngle > 360):
+            targetAngle = targetAngle - 360;
         targetStep = int (np.rint(targetAngle * 400.0 / 360.0))
-        print("scanning this step: " + str(targetStep) + " at this angle: " + str(targetAngle) );
+        checkstep = targetStep + 200;
+        if(checkstep > 400):
+            checkstep = checkstep - 400
+        #print("scanning this step: " + str(targetStep) + " at this angle: " + str(targetAngle) );
+        print('Step: ', targetStep, '   Angle: ', targetAngle,  '   CheckStep: ', checkstep)
 
-        self.ping360.transmitAngle(targetAngle)
+        self.ping360.transmitAngle(checkstep)
         data = self.ping360._data
         count = 0;
         returndistrance = self.range_d;
@@ -170,17 +179,25 @@ class PingInterface():
                 if(reading/255 > 0.65):
                     returndistrance = distance
 
+
         print("distance: " + str(returndistrance))
-        data_vals_trans[targetAngle];
+        data_vals_trans[targetStep];
         return data_vals_trans, returndistrance
 
 
     def transmitSweep(self, targetAngle1, targetAngle2, data = None): # checks a range of angles in front of us
         print('sweeping from ' , targetAngle1, ' to ', targetAngle2);
+        targetAngle1 = targetAngle1 + 180;
+        targetAngle2 = targetAngle2 + 180;
+
         if(targetAngle1 < 0):
             targetAngle1 = targetAngle1 + 360;
+        if(targetAngle1 > 360):
+            targetAngle1 = targetAngle1 - 360;
         if(targetAngle2 < 0):
             targetAngle2 = targetAngle2 + 360;
+        if(targetAngle2 > 360):
+            targetAngle2 = targetAngle2 - 360;
 
         targetStep1 = int (np.rint(targetAngle1 * 400.0 / 360.0))
         targetStep2 = int (np.rint(targetAngle2 * 400.0 / 360.0))
@@ -198,19 +215,29 @@ class PingInterface():
         if(targetStep1 > targetStep2):
             for step in range(targetStep1,400):
                 angle = (step / 400.0) * 360.0
-                print('Step: ', step, '   Angle: ', angle)
-                self.ping360.transmitAngle(step)
+                checkstep = step + 200;
+                if(checkstep > 400):
+                    checkstep = checkstep - 400
+                print('Step: ', step, '   Angle: ', angle,  '   CheckStep: ', checkstep)
+                self.ping360.transmitAngle(checkstep)
+
                 data_vals_trans[step] = self.ping360._data #save all data values corresponding to each grad step
             for step in range(0,targetStep2):
                 angle = (step / 400.0) * 360.0
-                print('Step: ', step, '   Angle: ', angle)
-                self.ping360.transmitAngle(step)
+                checkstep = step + 200;
+                if(checkstep > 400):
+                    checkstep = checkstep - 400
+                print('Step: ', step, '   Angle: ', angle,  '   CheckStep: ', checkstep)
+                self.ping360.transmitAngle(checkstep)
                 data_vals_trans[step] = self.ping360._data #save all data values corresponding to each grad step
         else:
             for step in range(targetStep1,targetStep2):
                 angle = (step / 400.0) * 360.0
-                print('Step: ', step, '   Angle: ', angle)
-                self.ping360.transmitAngle(step)
+                checkstep = step + 200;
+                if(checkstep > 400):
+                    checkstep = checkstep - 400
+                print('Step: ', step, '   Angle: ', angle,  '   CheckStep: ', checkstep)
+                self.ping360.transmitAngle(checkstep)
                 data_vals_trans[step] = self.ping360._data #save all data values corresponding to each grad step
         print('full sweep complete');
         return data_vals_trans
