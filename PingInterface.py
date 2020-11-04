@@ -161,11 +161,13 @@ class PingInterface():
         if(targetAngle > 360):
             targetAngle = targetAngle - 360;
         targetStep = int (np.rint(targetAngle * 400.0 / 360.0))
+
+
         checkstep = targetStep + 200;
         if(checkstep > 400):
             checkstep = checkstep - 400
-        #print("scanning this step: " + str(targetStep) + " at this angle: " + str(targetAngle) );
-        print('Step: ', targetStep, '   Angle: ', targetAngle,  '   CheckStep: ', checkstep)
+
+        print('Transmitting Single Angle:   Angle: ', targetAngle,  'Step: ', targetStep,   '   CheckStep: ', checkstep)
 
         self.ping360.transmitAngle(checkstep)
         data = self.ping360._data
@@ -180,7 +182,7 @@ class PingInterface():
                     returndistrance = distance
 
 
-        print("distance: " + str(returndistrance))
+        print("Distance at angle ", targetAngle,": " + str(returndistrance))
         data_vals_trans[targetStep];
         return data_vals_trans, returndistrance
 

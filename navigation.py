@@ -35,14 +35,16 @@ def makeDecision():
     while(loopcount < loops):
         loopcount+= 1;
         data_vals = csvWriter.getEmptyCSV();
-        data_vals, d0 = pingInterface.transmitAngle(90, data_vals)
-        data_vals, d1 = pingInterface.transmitAngle(50, data_vals)
-        data_vals, d2 = pingInterface.transmitAngle(30, data_vals)
-        data_vals, d3 = pingInterface.transmitAngle(10, data_vals)
-        data_vals, d4 = pingInterface.transmitAngle(-10, data_vals)
-        data_vals, d5 = pingInterface.transmitAngle(-30, data_vals)
-        data_vals, d6 = pingInterface.transmitAngle(-50, data_vals)
-        data_vals, d7 = pingInterface.transmitAngle(-90, data_vals)
+        print("Scanning Right to Left:")
+        data_vals, d0 = pingInterface.transmitAngle(-90, data_vals)
+        data_vals, d1 = pingInterface.transmitAngle(-50, data_vals)
+        data_vals, d2 = pingInterface.transmitAngle(-30, data_vals)
+        data_vals, d3 = pingInterface.transmitAngle(-10, data_vals)
+        data_vals, d4 = pingInterface.transmitAngle(10, data_vals)
+        data_vals, d5 = pingInterface.transmitAngle(30, data_vals)
+        data_vals, d6 = pingInterface.transmitAngle(50, data_vals)
+        data_vals, d7 = pingInterface.transmitAngle(90, data_vals)
+        print("Finnished Scannings")
 
         # d0 = getDistance(90)
         # d1 = getDistance(50)
