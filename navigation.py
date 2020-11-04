@@ -27,7 +27,7 @@ def makeDecision():
     #data_vals = csvWriter.getEmptyCSV();
     #data_vals = pingInterface.transmitSweep(0, 360, data_vals)
 
-    csvWriter.saveToCSV(data_vals)
+    #csvWriter.saveToCSV(data_vals)
 
     loops = 1;
     loopcount = 0;
